@@ -11,8 +11,8 @@ export default function App() {
   return (
     <SafeAreaView style={styles.container}>
       {/* <Home /> */}
-      <Login />
-      {/* <SignUp /> */}
+      {/* <Login /> */}
+      <SignUp />
       {/* <Index /> */}
     </SafeAreaView>
   );

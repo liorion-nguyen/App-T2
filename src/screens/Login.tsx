@@ -2,30 +2,29 @@ import { useState } from "react";
 import { StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
 
 export default function Login() {
-    const [email, setEmail] = useState("liorion.nguyen@gmail.com");
+    const [email, setEmail] = useState<string>("liorion.nguyen@gmail.com");
     const [password, setPassword] = useState("");
+    const [counter, setCounter] = useState<number>(0)
     function handleClick() {
-        console.log(email);
-        console.log(password);
+        // console.log(email);
+        // console.log(password);
+        setCounter(counter + 1);
     }
     function handleChangeText(text: string) {
         setEmail(text);
-    }
-    function handleChangePassword(text: string) {
-        setPassword(text);
     }
 
     return (
         <View style={styles.container}>
             <Text style={styles.title}>Sign In</Text>
-            <Text>{}</Text>
+            <Text>{counter}</Text>
             <View>
                 <Text>Email</Text>
-                <TextInput placeholder="Type something here..." style={styles.input} value={email} onChangeText={handleChangeText}/>
+                <TextInput placeholder="Type something here..." style={styles.input} value={email} onChangeText={handleChangeText} />
             </View>
             <View>
                 <Text>Password</Text>
-                <TextInput placeholder="Type something here..."  style={styles.input} value={password} onChangeText={handleChangePassword}/>
+                <TextInput placeholder="Type something here..." style={styles.input} value={password} onChangeText={setPassword} />
             </View>
             <TouchableOpacity style={styles.button} onPress={handleClick}>
                 <Text>Login</Text>
