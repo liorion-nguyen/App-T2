@@ -3,12 +3,21 @@ import { StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-nativ
 
 export default function SignUp() {
     // Tạo useState để theo dõi giá trị input của các TẽtInput khi click vào Sign Up thì sẽ console.log ra tất cả giá trị đã fill.
+    const [fullName, setFullName] = useState("")
+    function handleSignUp() {
+        console.log(fullName);
+    }
+
+    function handleChangeText1(text: string) {
+        setFullName(text);
+    }
+    
     return (
         <View style={styles.container}>
             <Text style={styles.title}>Sign Up</Text>
             <View>
                 <Text>Full Name</Text>
-                <TextInput placeholder="Type something here..." style={styles.input} />
+                <TextInput placeholder="Type something here..." style={styles.input} value={fullName} onChangeText={handleChangeText1}/>
             </View>
             <View>
                 <Text>Username</Text>
@@ -26,7 +35,7 @@ export default function SignUp() {
                 <Text>Confirm Password</Text>
                 <TextInput placeholder="Type something here..." style={styles.input} />
             </View>
-            <TouchableOpacity style={styles.button}>
+            <TouchableOpacity style={styles.button} onPress={handleSignUp}>
                 <Text>Sign Up</Text>
             </TouchableOpacity>
         </View>

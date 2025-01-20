@@ -10,9 +10,9 @@ import Index from "./src/screens/Index";
 export default function App() {
   return (
     <SafeAreaView style={styles.container}>
-      {/* <Home /> */}
+      <Home />
       {/* <Login /> */}
-      <SignUp />
+      {/* <SignUp /> */}
       {/* <Index /> */}
     </SafeAreaView>
   );
