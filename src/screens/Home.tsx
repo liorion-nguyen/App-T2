@@ -1,27 +1,98 @@
-import { Text, View } from "react-native";
+import { FlatList, Text, View } from "react-native";
 
 export default function Home() {
+    type Person = {
+        name: string,
+        age: number,
+        address: string,
+        email: string,
+        username?: string
+    }
+    const person: Person = {
+        name: "Nguyen Quoc Chung",
+        age: 18,
+        address: "HaNoi",
+        email: "chung@gmail.com"
+    }
+    console.log(person.address); // Lấy trực tiếp giá trị từ object
+    console.log(person["name"]); // Duyệt vòng lặp
+
+    for (let key in person) {
+        console.log(key, person[key as keyof Person]);
+    }
+
+    const personPush = {
+        gender: "Male",
+        phone: "0123456789"
+    }
+
+    const fakePerson = {
+        ...person,
+        ...personPush,
+        age: 19,
+        username: "Chung"
+    };
+    console.log(fakePerson);
+
+    // Hệ thống quản lý user
+    // Phải có rất user.
+
+
+    const user1 = {
+        username: "chung",
+        password: '123456',
+        email: "chung@gmail.com"
+    }
     const users = [
-        "Chung",
-        "Vinh",
-        "Minh",
-        "Khang"
-    ];
-    const scores = [2,1,3,4,5,6];
-    const scores2 = scores.map(score => score + 1)
-    const newScores = scores.filter((score: number) => score % 3 == 0)
-    console.log(scores2);
-    // Chẵn và không chia hết cho 3.
-    // + Tạo array là mảng chứa họ tên các bạn học trong lớp. Hãy tạo giao diện page show thông tin lớp học và tên học sinh trong lớp.
-    // + Tạo array là 1 mảng chứa 1 dãy số từ 1 đến 10. Hãy tạo giao diện đưa ra các phần tử có giá trị chẵn.
+        {
+            username: "chung",
+            password: '123456',
+            email: "chung@gmail.com"
+        },
+        {
+            username: "minh",
+            password: '1234567',
+            email: "minh@gmail.com"
+        },
+        {
+            username: "anh",
+            password: '1234567',
+            email: "anh@gmail.com"
+        }
+    ]
+
+    // Tạo object có tên là student: name, age, grade, email, gender.
+    // Tạo type Student với key y hệt bên trên và áp dụng cho object student.
+    // Sử dụng 2 cách lấy giá trị trong object để lấy ra name, age, email, gender.
+    // Duyệt các key trong object và đưa ra value của từng key đấy.
+    // Sử dụng toán tử trải để sao chép ra 1 object tương tự student 
+    // sau đó thêm 1 key mới là username và cập nhật giá trị của key grade.
+
+    // + Sử dụng Type cho object user có các thuộc tính fullName, username, password, email, age. Và tạo ra 1 array bên trong chứa các object user(ít nhất 3 người dùng).
+    // + Hãy thực hiện sử dụng FlatList hoặc map, hoặc xử lý hiện thị dạng List lên màn hình các user.
     return (
         <View>
             <Text>Screen Home</Text>
             {
                 users.map((user, index) => (
-                    <Text key={index}>{user}</Text>
+                    <View key={index}>
+                        <Text>{user.username}</Text>
+                        <Text>{user.password}</Text>
+                        <Text>{user.email}</Text>
+                    </View>
                 ))
             }
+            <FlatList
+                data={users}
+                keyExtractor={(item, index) => index.toString()}
+                renderItem={({ item }) => (
+                    <View>
+                        <Text>{item.username}</Text>
+                        <Text>{item.password}</Text>
+                        <Text>{item.email}</Text>
+                    </View>
+                )}
+            />
         </View>
     );
 }
