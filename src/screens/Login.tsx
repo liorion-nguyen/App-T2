@@ -1,4 +1,4 @@
-import { Button, Icon, Input, Pressable, Stack } from "native-base";
+import { Button, CheckIcon, Icon, Input, Link, Pressable, Select, Spinner, Stack } from "native-base";
 import { useState } from "react";
 import { StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
@@ -24,6 +24,7 @@ export default function Login({ nameApp, version }: LoginProps) {
     }
 
     const [show, setShow] = useState(false);
+    const [service, setService] = useState("");
 
     return (
         <View style={styles.container}>
@@ -55,6 +56,34 @@ export default function Login({ nameApp, version }: LoginProps) {
                     <Icon as={<MaterialIcons name={show ? "visibility" : "visibility-off"} />} size={5} mr="2" color="muted.400" />
                 </Pressable>} placeholder="Password" />
             </Stack>
+            <Spinner color="indigo.500" />
+            <Select selectedValue={service} minWidth="200" accessibilityLabel="Choose Service" placeholder="Choose Service" _selectedItem={{
+                bg: "teal.600",
+                endIcon: <CheckIcon size="5" />
+            }} mt={1} onValueChange={itemValue => setService(itemValue)}>
+                <Select.Item label="UX Research" value="ux" />
+                <Select.Item label="Web Development" value="web" />
+                <Select.Item label="Cross Platform Development" value="cross" />
+                <Select.Item label="UI Designing" value="ui" />
+                <Select.Item label="Backend Development" value="backend" />
+            </Select>
+            <Link _text={{
+                fontSize: "xl",
+                _light: {
+                    color: "cyan.500"
+                },
+                color: "cyan.300"
+            }} href="" isUnderlined _hover={{
+                _text: {
+                    _light: {
+                        color: "cyan.600"
+                    },
+                    color: "cyan.400"
+                }
+            }}>
+                Click me to open NativeBase website.
+            </Link>
+
         </View>
     );
 }

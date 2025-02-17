@@ -16,6 +16,7 @@
     "native-base": "^3.4.28",
     "react": "18.3.1",
     "react-native": "0.76.3",
+    "react-native-image-slider-box": "^2.0.7",
     "react-native-svg": "^15.11.1"
   },
   "devDependencies": {
