@@ -1,23 +1,31 @@
 import { ScrollView } from "native-base";
+import { useState } from "react";
 import { Button, StyleSheet, Text, TextInput, View } from "react-native";
 
 export default function Todo() {
+    const [inp, setInp] = useState("");
+    const [todos, setTodos] = useState<string[]>([]);
+    const handleAdd = () => {
+        setTodos([...todos, inp]);
+        setInp("");
+    }
+    
     return (
         <View style={styles.container}>
             <Text style={styles.title}>TodoList</Text>
             <View style={styles.form}>
-                <TextInput placeholder="Add new todo" style={styles.input}/>
-                <Button title="Add" />
+                <TextInput placeholder="Add new todo" value={inp} onChangeText={setInp} style={styles.input} />
+                <Button title="Add" onPress={handleAdd} />
             </View>
             <ScrollView style={styles.boxTodo}>
-                <View style={styles.rowTodo}>
-                    <Text>Todo 1</Text>
-                    <Button title="Delete" />
-                </View>
-                <View style={styles.rowTodo}>
-                    <Text>Todo 2</Text>
-                    <Button title="Delete" />
-                </View>
+                {
+                    todos.map((todo, index) => (
+                        <View style={styles.rowTodo} key={index}>
+                            <Text>{todo}</Text>
+                            <Button title="Delete" />
+                        </View>
+                    ))
+                }
             </ScrollView>
         </View>
     );
@@ -26,9 +34,9 @@ export default function Todo() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        flexDirection: "column", 
-        alignItems: 'flex-start',   
-        padding: 20 
+        flexDirection: "column",
+        alignItems: 'flex-start',
+        padding: 20
     },
     title: {
         fontSize: 35,
