@@ -2,14 +2,30 @@ import { ScrollView } from "native-base";
 import { useState } from "react";
 import { Button, StyleSheet, Text, TextInput, View } from "react-native";
 
+type Todo = {
+    todo: string;
+    date: Date;
+}
 export default function Todo() {
     const [inp, setInp] = useState("");
-    const [todos, setTodos] = useState<string[]>([]);
+    const [todos, setTodos] = useState<Todo[]>([]);
     const handleAdd = () => {
-        setTodos([...todos, inp]);
+        setTodos([...todos, {
+            todo: inp,
+            date: new Date()
+        }]);
         setInp("");
     }
-    
+
+    const handleDelete = (index: number) => {
+        const data = todos.filter((item, i) => i != index); // filter() return a new array with the elements that pass the condition
+        setTodos(data);
+    }
+
+    const handleCovert = (date: Date) => {
+        return `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()} ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`;
+    }
+
     return (
         <View style={styles.container}>
             <Text style={styles.title}>TodoList</Text>
@@ -21,8 +37,12 @@ export default function Todo() {
                 {
                     todos.map((todo, index) => (
                         <View style={styles.rowTodo} key={index}>
-                            <Text>{todo}</Text>
-                            <Button title="Delete" />
+                            <View>
+                                <Text>{index + 1}.</Text>
+                                <Text>{todo.todo}</Text>
+                                <Text>{handleCovert(todo.date)}</Text>
+                            </View>
+                            <Button title="Delete" onPress={() => handleDelete(index)} />
                         </View>
                     ))
                 }
@@ -54,6 +74,9 @@ const styles = StyleSheet.create({
         width: "80%",
         padding: 10,
         borderRadius: 5
+    },
+    Info: {
+        flexDirection: "column",
     },
     boxTodo: {
         width: "100%",
