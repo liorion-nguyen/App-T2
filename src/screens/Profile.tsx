@@ -5,6 +5,6 @@ export default function Profile() {
         <View>
             <Text>Hello</Text>
             <Text>Da cap nhat</Text>
-        </View>
+        </View>  
     );
 }
