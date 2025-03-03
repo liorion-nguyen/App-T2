@@ -97,9 +97,3 @@ const styles = StyleSheet.create({
         borderBottomColor: "red"
     }
 });
-
-git init
-git add .
-git commit -m "first commit"
-git branch -M main
-git remote add origin git@github.com:liorion-nguyen/Profile_Test.git
