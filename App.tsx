@@ -34,4 +34,7 @@ const styles = StyleSheet.create({
 B1: Trước khi code full code về
 B2: Khi code xong git add ., git commit, git pull origin main, git push origin main
 B3: Sau khi push xong vào git để merge vào main.
+dsadsadsadsad
+đasadsad
+dsadas
 */
