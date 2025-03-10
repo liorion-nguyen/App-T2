@@ -2,23 +2,20 @@ import {
   StyleSheet,
   SafeAreaView
 } from "react-native";
-import Home from "./src/screens/Home";
-import Login from "./src/screens/Login";
-import SignUp from "./src/screens/SignUp";
-import Index from "./src/screens/Index";
 import { NativeBaseProvider } from "native-base";
 import Todo from "./src/screens/Todo";
+import Home from "./src/screens/Home";
 
 export default function App() {
   const title = "Profile Test";
   return (
     <NativeBaseProvider>
       <SafeAreaView style={styles.container}>
-        {/* <Home /> */}
+        <Home />
         {/* <Login nameApp={title} version={10} /> */}
         {/* <SignUp /> */}
         {/* <Index /> */}
-        <Todo />
+        {/*<Todo /> */}
       </SafeAreaView>
     </NativeBaseProvider>
   );

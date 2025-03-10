@@ -1,4 +1,4 @@
-import { FlatList, Text, View } from "react-native";
+import { FlatList, ScrollView, StyleSheet, Text, View } from "react-native";
 
 export default function Home() {
     type Person = {
@@ -72,27 +72,45 @@ export default function Home() {
     // + Hãy thực hiện sử dụng FlatList hoặc map, hoặc xử lý hiện thị dạng List lên màn hình các user.
     return (
         <View>
-            <Text>Screen Home</Text>
-            {
-                users.map((user, index) => (
-                    <View key={index}>
-                        <Text>{user.username}</Text>
-                        <Text>{user.password}</Text>
-                        <Text>{user.email}</Text>
-                    </View>
-                ))
-            }
-            <FlatList
-                data={users}
-                keyExtractor={(item, index) => index.toString()}
-                renderItem={({ item }) => (
-                    <View>
-                        <Text>{item.username}</Text>
-                        <Text>{item.password}</Text>
-                        <Text>{item.email}</Text>
-                    </View>
-                )}
-            />
+            <Text style={styles.title}>Screen Home</Text>
+            <ScrollView style={styles.box}>
+                {
+                    users.map((user, index) => (
+                        <View key={index}>
+                            <Text>{user.username}</Text>
+                            <Text>{user.password}</Text>
+                            <Text>{user.email}</Text>
+                        </View>
+                    ))
+                }
+                <FlatList
+                    data={users}
+                    keyExtractor={(item, index) => index.toString()}
+                    renderItem={({ item }) => (
+                        <View>
+                            <Text>{item.username}</Text>
+                            <Text>{item.password}</Text>
+                            <Text>{item.email}</Text>
+                        </View>
+                    )}
+                />
+            </ScrollView>
         </View>
     );
 }
+const styles = StyleSheet.create({
+    title: {
+        fontSize: 40,
+        fontWeight: 600,
+        textAlign: "center",
+    },
+    box: {
+        width: 350,
+        height: "100%",
+        marginTop: 20,
+        borderWidth: 1,
+        borderColor: "black",
+        borderRadius: 5,
+        padding: 10
+    }
+})
