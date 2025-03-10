@@ -12,7 +12,7 @@ export default function App() {
   return (
     <NativeBaseProvider>
       <SafeAreaView style={styles.container}>
-        {/* <Home /> */}
+        <Home />
         {/* <Login nameApp={title} version={10} /> */}
         {/* <SignUp /> */}
         <Index />

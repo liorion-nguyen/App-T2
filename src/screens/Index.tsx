@@ -7,7 +7,7 @@ export default function Index() {
             <Text style={styles.title}>Aliquet facilisis facilisis adipiscing</Text>
             <Text>Nibh at velit blandit sed sollicitudin risus non pellentesque interdum aliquam ullamcorper</Text>
             <TouchableOpacity style={styles.button}>
-                <Text>Get started</Text>
+                <Text>coming soon</Text>
             </TouchableOpacity>
         </View>
     );
