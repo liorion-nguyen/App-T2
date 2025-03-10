@@ -5,6 +5,7 @@ import {
 import { NativeBaseProvider } from "native-base";
 import Todo from "./src/screens/Todo";
 import Home from "./src/screens/Home";
+import Index from "./src/screens/Index";
 
 export default function App() {
   const title = "Profile Test";
@@ -14,8 +15,8 @@ export default function App() {
         <Home />
         {/* <Login nameApp={title} version={10} /> */}
         {/* <SignUp /> */}
-        {/* <Index /> */}
-        {/*<Todo /> */}
+        <Index />
+        {/* <Todo /> */}
       </SafeAreaView>
     </NativeBaseProvider>
   );
