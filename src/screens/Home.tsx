@@ -72,7 +72,7 @@ export default function Home() {
     // + Hãy thực hiện sử dụng FlatList hoặc map, hoặc xử lý hiện thị dạng List lên màn hình các user.
     return (
         <View>
-            <Text style={styles.title}>Screen Home</Text>
+            <Text style={styles.title}>Title</Text>
             <ScrollView style={styles.box}>
                 {
                     users.map((user, index) => (
